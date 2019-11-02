@@ -8,8 +8,18 @@ sealed class Token {
 
     data class Operator(
         val value: Char
-    ) : Token()
+    ) : Token() {
+        companion object {
+            @JvmStatic
+            val OPERATOR_LIST = listOf('+', '-', '*', '/')
+        }
+    }
 
-    object LeftParenthesis : Token()
-    object RightParenthesis : Token()
+    object LeftParenthesis : Token() {
+        const val value = '('
+    }
+
+    object RightParenthesis : Token() {
+        const val value = ')'
+    }
 }
