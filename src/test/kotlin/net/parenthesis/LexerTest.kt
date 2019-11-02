@@ -1,7 +1,7 @@
 package net.parenthesis
 
-import net.arithmetic.Lexer
-import net.arithmetic.Token
+import net.arithmetic.lexer.Lexer
+import net.arithmetic.lexer.Token
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test

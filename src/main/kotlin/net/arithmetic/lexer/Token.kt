@@ -1,4 +1,4 @@
-package net.arithmetic
+package net.arithmetic.lexer
 
 sealed class Token {
 

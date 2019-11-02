@@ -1,9 +1,9 @@
-package net.arithmetic
+package net.arithmetic.lexer
 
-import net.arithmetic.Token.LeftParenthesis
-import net.arithmetic.Token.Operator
-import net.arithmetic.Token.Operator.Companion.OPERATOR_LIST
-import net.arithmetic.Token.RightParenthesis
+import net.arithmetic.lexer.Token.LeftParenthesis
+import net.arithmetic.lexer.Token.Operator
+import net.arithmetic.lexer.Token.Operator.Companion.OPERATOR_LIST
+import net.arithmetic.lexer.Token.RightParenthesis
 
 object Lexer {
 
