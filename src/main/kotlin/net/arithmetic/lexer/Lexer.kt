@@ -7,15 +7,15 @@ import net.arithmetic.lexer.Token.RightParenthesis
 
 object Lexer {
 
-    fun tokenize(text: String): Sequence<Token> {
+    fun tokenize(expression: String): Sequence<Token> {
         var position = 0
-        var currentChar: Char? = text[position]
+        var currentChar: Char? = expression[position]
 
         fun advance() {
             position += 1
             currentChar = when {
-                position >= text.length -> null
-                else -> text[position]
+                position >= expression.length -> null
+                else -> expression[position]
             }
         }
 
@@ -42,9 +42,9 @@ object Lexer {
 
             return@generateSequence when {
                 currentChar!!.isDigit() -> intToken()
-                currentChar!! in OPERATOR_LIST -> Operator(currentChar!!).also { advance() }
-                currentChar!! == LeftParenthesis.value -> LeftParenthesis.also { advance() }
-                currentChar!! == RightParenthesis.value -> RightParenthesis.also { advance() }
+                currentChar!! in OPERATOR_LIST -> Operator.from(currentChar!!).also { advance() }
+                currentChar!! == LeftParenthesis.repr -> LeftParenthesis.also { advance() }
+                currentChar!! == RightParenthesis.repr -> RightParenthesis.also { advance() }
                 else -> throw IllegalArgumentException("Unknown token $currentChar.")
             }
         }

@@ -2,24 +2,52 @@ package net.arithmetic.lexer
 
 sealed class Token {
 
+    sealed class Operator : Token() {
+        abstract val repr: Char
+
+        object Plus : Operator() {
+            override val repr = '+'
+        }
+
+        object Minus : Operator() {
+            override val repr = '-'
+        }
+
+        object Mul : Operator() {
+            override val repr = '*'
+        }
+
+        object Div : Operator() {
+            override val repr = '/'
+        }
+
+        override fun toString() = "$repr"
+
+        companion object {
+            @JvmStatic
+            val OPERATOR_LIST = listOf(Plus.repr, Minus.repr, Mul.repr, Div.repr)
+
+            fun from(char: Char): Operator {
+                return when (char) {
+                    Plus.repr -> Plus
+                    Minus.repr -> Minus
+                    Mul.repr -> Mul
+                    Div.repr -> Div
+                    else -> throw IllegalArgumentException("$char is not on accepted operator list $OPERATOR_LIST")
+                }
+            }
+        }
+    }
+
     data class Integer(
         val value: Int
     ) : Token()
 
-    data class Operator(
-        val value: Char
-    ) : Token() {
-        companion object {
-            @JvmStatic
-            val OPERATOR_LIST = listOf('+', '-', '*', '/')
-        }
-    }
-
     object LeftParenthesis : Token() {
-        const val value = '('
+        const val repr = '('
     }
 
     object RightParenthesis : Token() {
-        const val value = ')'
+        const val repr = ')'
     }
 }

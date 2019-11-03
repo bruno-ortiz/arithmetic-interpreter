@@ -2,6 +2,8 @@ package net.parenthesis
 
 import net.arithmetic.lexer.Lexer
 import net.arithmetic.lexer.Token
+import net.arithmetic.lexer.Token.Operator.Mul
+import net.arithmetic.lexer.Token.Operator.Plus
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
@@ -16,9 +18,9 @@ class LexerTest {
 
         assertEquals(5, tokenSequence.size)
         assertEquals(Token.Integer(7), tokenSequence[0])
-        assertEquals(Token.Operator('+'), tokenSequence[1])
+        assertEquals(Plus, tokenSequence[1])
         assertEquals(Token.Integer(3), tokenSequence[2])
-        assertEquals(Token.Operator('*'), tokenSequence[3])
+        assertEquals(Mul, tokenSequence[3])
         assertEquals(Token.Integer(4), tokenSequence[4])
     }
 
@@ -31,10 +33,10 @@ class LexerTest {
         assertEquals(7, tokenSequence.size)
         assertEquals(Token.LeftParenthesis, tokenSequence[0])
         assertEquals(Token.Integer(7), tokenSequence[1])
-        assertEquals(Token.Operator('+'), tokenSequence[2])
+        assertEquals(Plus, tokenSequence[2])
         assertEquals(Token.Integer(3), tokenSequence[3])
         assertEquals(Token.RightParenthesis, tokenSequence[4])
-        assertEquals(Token.Operator('*'), tokenSequence[5])
+        assertEquals(Mul, tokenSequence[5])
         assertEquals(Token.Integer(4), tokenSequence[6])
     }
 
