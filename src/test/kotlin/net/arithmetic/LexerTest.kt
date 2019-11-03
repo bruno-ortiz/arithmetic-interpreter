@@ -1,4 +1,4 @@
-package net.parenthesis
+package net.arithmetic
 
 import net.arithmetic.lexer.Lexer
 import net.arithmetic.lexer.Token

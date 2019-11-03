@@ -1,6 +1,5 @@
-package net.parenthesis.interpreter
+package net.arithmetic.interpreter
 
-import net.arithmetic.interpreter.Interpreter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -19,12 +18,22 @@ class InterpreterTest {
 
     @Test
     internal fun `test can interpret another expression`() {
-        val expression = "8 - 2 + 2 * 6 \\ 3"
+        val expression = "8 - 2 + 2 * 6 / 3"
         val interpreter = Interpreter()
 
         val result = interpreter.interpret(expression)
 
-        assertEquals(6, result)
+        assertEquals(10, result)
+    }
+
+    @Test
+    internal fun `test can interpret expression with parenthesis`() {
+        val expression = "(8 + (5 - 2) * 6) / 2"
+        val interpreter = Interpreter()
+
+        val result = interpreter.interpret(expression)
+
+        assertEquals(13, result)
     }
 
     @Test

@@ -6,6 +6,7 @@ import net.arithmetic.lexer.Token.Operator.Div
 import net.arithmetic.lexer.Token.Operator.Minus
 import net.arithmetic.lexer.Token.Operator.Mul
 import net.arithmetic.lexer.Token.Operator.Plus
+import net.arithmetic.lexer.Token.RightParenthesis
 
 class Interpreter {
     private lateinit var iterator: Iterator<Token>
@@ -14,11 +15,15 @@ class Interpreter {
     fun interpret(expression: String): Int {
         init(Lexer.tokenize(expression))
 
-        val result = term()
+        return expr()
+    }
+
+    private fun expr(): Int {
+        var result = term()
 
         val allowedOperators = listOf(Plus, Minus)
         while (currentToken in allowedOperators) {
-            return if (currentToken is Plus) {
+            result = if (currentToken is Plus) {
                 eat()
                 result + term()
             } else {
@@ -30,11 +35,11 @@ class Interpreter {
     }
 
     private fun term(): Int {
-        val result = factor()
+        var result = factor()
 
         val allowedOperators = listOf(Mul, Div)
         while (currentToken in allowedOperators) {
-            return if (currentToken is Mul) {
+            result = if (currentToken is Mul) {
                 eat()
                 result * factor()
             } else {
@@ -47,8 +52,15 @@ class Interpreter {
 
     private fun factor(): Int {
         val token = currentToken
-        eat { token is Token.Integer }
-        return (token as Token.Integer).value
+        return if (token is Token.Integer) {
+            eat()
+            token.value
+        } else {
+            eat()
+            val result = expr()
+            eat { currentToken is RightParenthesis }
+            result
+        }
     }
 
     private fun eat(tokenTypeFunc: () -> Boolean = { true }) {
