@@ -25,8 +25,9 @@ sealed class Token {
 
         companion object {
             @JvmStatic
-            val OPERATOR_LIST = listOf(Plus.repr, Minus.repr, Mul.repr, Div.repr)
+            val OPERATOR_LIST: List<Char> = listOf(Plus.repr, Minus.repr, Mul.repr, Div.repr)
 
+            @JvmStatic
             fun from(char: Char): Operator {
                 return when (char) {
                     Plus.repr -> Plus
