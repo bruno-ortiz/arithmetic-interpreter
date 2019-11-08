@@ -1,7 +1,5 @@
-package net.arithmetic
+package net.arithmetic.lexer
 
-import net.arithmetic.lexer.Lexer
-import net.arithmetic.lexer.Token
 import net.arithmetic.lexer.Token.Operator.Mul
 import net.arithmetic.lexer.Token.Operator.Plus
 import org.junit.jupiter.api.Assertions.assertEquals

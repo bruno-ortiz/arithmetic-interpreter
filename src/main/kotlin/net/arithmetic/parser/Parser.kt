@@ -73,6 +73,6 @@ class Parser(tokenSequence: Sequence<Token>) {
 
 //    companion object {
 //        private val PLUS_MINUS = listOf(Plus, Minus)
-//        private val MUL_DIV = listOf(Operator.Mul, Operator.Div)
+//        private val MUL_DIV = listOf(Mul, Div)
 //    }
 }

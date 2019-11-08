@@ -12,7 +12,6 @@ class Interpreter {
 
         val ast = parser.buildAST()
 
-        return 0
+        return NodeVisitor.visit(ast)
     }
-
 }
