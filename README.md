@@ -1,6 +1,7 @@
 # arithmetic-interpreter
-A study case about interpreters
+
+It was made following the amazing posts at https://ruslanspivak.com/ .
 
 ***This was made solely for the purpose of studying.***
 
-It was made following the amazing posts at https://ruslanspivak.com/ .
+To see it working, look at the unit tests.
